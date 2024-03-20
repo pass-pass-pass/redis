@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article {{ id }}</title>
+</head>
+<body>
+    <form action="/article/{{ id }}/comment" method="post">
+        <label for="comment">New Comment:</label>
+        <input type="text" id="comment" name="comment" required>
+        <input type="submit" value="Add Comment">
+    </form>
+    <form action="/article/{{ id }}/tag" method="post">
+        <label for="tag">Add Tag:</label>
+        <input type="text" id="tag" name="tag" required>
+        <input type="submit" value="Add Tag">
+    </form>    
+    <h1>Article {{ id }}</h1>
+    <p>{{ content }}</p>
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/article/{{ id }}/view">View Article (Increase View Count)</a>
+</body>
+</html>
